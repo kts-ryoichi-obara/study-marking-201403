@@ -14,6 +14,7 @@
 ファイルには以下の形式で記述されているのとする。
 
 例)  
+```json
 [{  
   "date" : "20140101",  
   "start" : "0900",  
@@ -29,20 +30,21 @@
   "start" : "0830",  
   "end" : "1930"  
 },...]  
+```
 
-
-[S] Java -----------------------------------------------------  
+```java
 package jp.ktsystem.kadai201403.xxxx // xxxxの部分は受講者のドメインアカウント名  
 public class Kadai {  
     public static void parseWorkTimeData(String anInputPath, String anOutputPath) throws KadaiException;  
 }  
-[E] Java -----------------------------------------------------  
+```
 
 
 * Lv.2 
 ファイルには以下の形式で記述されているのとする。
 
 例)  
+```json
 {  
   "201401": [ { "20140101" : { "start":"0900", "end":"1800" }, "20140102" : { "start":"0900", "end":"1800" },... } ],  
   "201402": [ { "20140201" : { "start":"0900", "end":"1800" }, "20140202" : { "start":"0900", "end":"1800" },... } ],  
@@ -50,18 +52,19 @@ public class Kadai {
 	.  
 	.  
 }  
+```
 
 * ファイルには"yyyyMMdd"の部分を日付として出力する
 * 日付でソート(昇順)されて出力されていること(Lv2のみ)
 * 日付の値が重複する場合はエラーとすること(エラーコード:12)(Lv2のみ)
 * 先頭の"yyyyMM"をファイル名とし、年月ごとにファイル出力(※フォーマットは共通仕様参照)すること
 
-[S] Java -----------------------------------------------------  
+```java
 package jp.ktsystem.kadai201403.xxxx // xxxxの部分は受講者のドメインアカウント名  
 public class Kadai {  
     public static void parseWorkTimeDataLv2(String anInputPath, String anOutputPath) throws KadaiException;  
 }  
-[E] Java -----------------------------------------------------  
+```
 
 
 ## 共通仕様
@@ -71,7 +74,7 @@ public class Kadai {
 * 値に「null」とある場合はnullの場合として扱う(もちろんこの場合はエラー)
 * ファイル出力フォーマットは以下とする
 
-----------ここから----------------------------------  
+```json
 [  
 {"date":"20140101","workTime":480,"total":480},  
 {"date":"20140102","workTime":480,"total":960},  
@@ -79,7 +82,7 @@ public class Kadai {
 	.  
 	.  
 ]  
-----------ここまで----------------------------------  
+```
 
 ## 前回仕様(Lv.2)＋α
 
@@ -101,12 +104,12 @@ public class Kadai {
 
 エラーの通知は例外をスローすることで行うこと。
 
-[S] Java -----------------------------------------------------  
+```java
 package jp.ktsystem.kadai201403.xxxx // xxxxの部分は受講者のドメインアカウント名  
 public class Kadai {  
     public static void calcWorkTimeForFile(String anInputPath, String anOutputPath) throws KadaiException;  
 }  
-[E] Java -----------------------------------------------------  
+```
 
 エラーコード  
 1：入力文字列がnull、または空文字  
